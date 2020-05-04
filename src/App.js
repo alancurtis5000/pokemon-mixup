@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/main.scss';
+import Button from './components/Button/Button';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <Button label="hello" />
         <a
           className="App-link"
           href="https://reactjs.org"
