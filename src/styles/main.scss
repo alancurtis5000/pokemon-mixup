@@ -2,3 +2,12 @@
 @import './base/settings';
 @import './base/globals';
 @import '../App.scss';
+
+// components
+@import '../components/Header/Header';
+@import '../components/PageTitle/PageTitle';
+
+// pages
+@import '../pages/Page1/Page1';
+@import '../pages/Page2/Page2';
+@import '../pages/PageNotFound/PageNotFound';

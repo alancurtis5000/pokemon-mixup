@@ -1,12 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
-const Header = () => {
+const Header = (props) => {
+  const { pageTitle } = props;
   return (
     <div className="Header">
       Header
-      <NavLink to="/">Page1</NavLink>
-      <NavLink to="/page2">Page2</NavLink>
+      <NavLink exact to="/">
+        Page1
+      </NavLink>
+      <NavLink exact to="/page2">
+        Page2
+      </NavLink>
+      <PageTitle pageTitle={pageTitle} />
     </div>
   );
 };
