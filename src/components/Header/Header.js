@@ -8,6 +8,9 @@ const Header = (props) => {
     <div className="Header">
       Header
       <NavLink exact to="/">
+        Landing
+      </NavLink>
+      <NavLink exact to="/Page1">
         Page1
       </NavLink>
       <NavLink exact to="/page2">
