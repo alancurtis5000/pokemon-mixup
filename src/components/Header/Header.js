@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import LogoPokemonMixupCol from '../../icons/LogoPokemonMixupCol';
 import LogoPokemonMixupRow from '../../icons/LogoPokemonMixupRow';
+import LogoPokemonMixupInitials from '../../icons/LogoPokemonMixupInitials';
 
 const Header = (props) => {
   const { pageTitle } = props;
   return (
     <div className="Header">
+      <LogoPokemonMixupInitials height="40px" />
       <LogoPokemonMixupRow height="40px" />
       <LogoPokemonMixupCol height="40px" />
       Header
