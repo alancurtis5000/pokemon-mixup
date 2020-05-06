@@ -6,6 +6,7 @@ import { updateScreenSize as actionUpdateScreenSize } from './actions/screenSize
 
 export class App extends React.Component {
   componentDidMount() {
+    this.handleWindowSizeChange();
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
@@ -15,8 +16,24 @@ export class App extends React.Component {
 
   handleWindowSizeChange = () => {
     const width = window.innerWidth;
-    const { updateScreenSize } = this.props;
-    updateScreenSize(width);
+    let size;
+    switch (true) {
+      case width > 1024:
+        size = 'desktop';
+        break;
+      case width > 768:
+        size = 'tablet';
+        break;
+      case width > 0:
+        size = 'mobile';
+        break;
+      default:
+        break;
+    }
+    const { updateScreenSize, screenSize } = this.props;
+    if (size !== screenSize.size) {
+      updateScreenSize(width, size);
+    }
   };
 
   render() {
