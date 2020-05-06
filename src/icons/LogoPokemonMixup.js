@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LogoPokemonMixup = (props) => {
-  const { fill1, fill2, fill3, height, width } = props;
+  const { fill1, fill2, fill3, height, width, className } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 717.99 456.97"
       height={height}
       width={width}
+      className={className}
     >
       <path
         fill={fill1}
@@ -191,6 +192,7 @@ LogoPokemonMixup.defaultProps = {
   fill3: '#ffcb05',
   height: '50px',
   width: undefined,
+  className: undefined,
 };
 
 LogoPokemonMixup.prototype = {
@@ -199,6 +201,7 @@ LogoPokemonMixup.prototype = {
   fill3: PropTypes.string,
   height: PropTypes.string,
   width: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default LogoPokemonMixup;
