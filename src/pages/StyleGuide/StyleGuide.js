@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 
-const Styles = () => {
-  const pageTitle = 'Styles';
+const StyleGuide = () => {
+  const pageTitle = 'StyleGuide';
   return (
-    <div className="Styles">
+    <div className="StyleGuide">
       <Header pageTitle={pageTitle} />
       <div className="buttons">
         <button type="button" className="btn-action">
@@ -26,4 +26,4 @@ const Styles = () => {
     </div>
   );
 };
-export default Styles;
+export default StyleGuide;
