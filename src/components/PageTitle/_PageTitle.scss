@@ -1,3 +1,5 @@
 .PageTitle {
-  color: green;
+  @extend .text-outline;
+  color: $pb-white;
+  font-size: $fs-1;
 }

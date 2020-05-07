@@ -17,6 +17,12 @@ const Styles = () => {
           Secondary
         </button>
       </div>
+      <div className="fonts">
+        <h1>hello Alexander</h1>
+        <h2>hello Alexander</h2>
+        <h3>hello Alexander</h3>
+        <h4>hello Alexander</h4>
+      </div>
     </div>
   );
 };

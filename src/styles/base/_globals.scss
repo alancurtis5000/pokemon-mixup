@@ -1,19 +1,7 @@
-.active {
-  color: $logo-yellow;
-}
-
-:focus {
-  outline: $logo-yellow solid 4px;
-  outline-offset: -4px;
-}
-
 .btn {
   background-color: transparent;
   border: 2px solid transparent;
-  font-size: $font-size-small;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 .btn-action {

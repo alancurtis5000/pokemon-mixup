@@ -20,4 +20,34 @@ body {
 }
 button {
   font-family: $primary-ff;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+div {
+  // so cursor over font won't turn to text selector
+  cursor: default;
+}
+
+h1 {
+  font-size: $fs-1;
+}
+h2 {
+  font-size: $fs-2;
+}
+h3 {
+  font-size: $fs-3;
+}
+h4 {
+  font-size: $fs-4;
+}
+
+.active {
+  color: $logo-yellow;
+}
+
+:focus {
+  outline: $logo-yellow solid 4px;
+  outline-offset: -4px;
 }
