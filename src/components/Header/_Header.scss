@@ -2,6 +2,7 @@
   background-color: $pb-red;
   width: 100%;
   display: flex;
+  font-size: $font-size-large;
   @extend .center;
   .grid {
     display: grid;

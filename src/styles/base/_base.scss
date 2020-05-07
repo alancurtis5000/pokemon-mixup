@@ -16,17 +16,8 @@ body {
   background-color: $pb-grey;
   font-size: 1.6rem;
   line-height: 1.6;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $primary-ff;
 }
-
 button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: default;
-}
-
-.is-active {
-  font-weight: bold;
+  font-family: $primary-ff;
 }

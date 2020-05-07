@@ -25,15 +25,6 @@ const Header = (props) => {
         </button>
         <div className="page-title">
           <PageTitle pageTitle={pageTitle} />
-          <button type="button" className="btn-action">
-            Action
-          </button>
-          <button type="button" className="btn-primary">
-            Primary
-          </button>
-          <button type="button" className="btn-secondary">
-            Secondary
-          </button>
         </div>
         <div className="login">P</div>
       </div>
