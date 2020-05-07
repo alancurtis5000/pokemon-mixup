@@ -8,6 +8,10 @@ export class App extends React.Component {
   componentDidMount() {
     this.handleWindowSizeChange();
     window.addEventListener('resize', this.handleWindowSizeChange);
+    window.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      document.activeElement.blur();
+    });
   }
 
   componentWillUnmount() {

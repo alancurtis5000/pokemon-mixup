@@ -9,9 +9,9 @@ const Header = (props) => {
   const { pageTitle, screenSize, history } = props;
   const goHome = () => {
     console.log('clicked');
-    document.activeElement.blur();
     history.push('/');
   };
+
   return (
     <div className="Header">
       <div className="grid">
