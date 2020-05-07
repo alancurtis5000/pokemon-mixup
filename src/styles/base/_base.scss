@@ -18,10 +18,13 @@ body {
   line-height: 1.6;
   font-family: $primary-ff;
 }
+
 button {
   font-family: $primary-ff;
   font-size: 1.6rem;
   line-height: 1.6;
+  padding: 0px;
+  margin: 0px;
   cursor: pointer;
 }
 

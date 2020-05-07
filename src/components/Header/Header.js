@@ -17,10 +17,10 @@ const Header = (props) => {
       <div className="grid">
         <button type="button" className="btn" onClick={goHome}>
           {screenSize.size === 'mobile' ? (
-            <LogoPokemonMixupInitials height="36px" />
+            <LogoPokemonMixupInitials height="34px" />
           ) : null}
           {screenSize.size === 'tablet' || screenSize.size === 'desktop' ? (
-            <LogoPokemonMixupRow height="36px" />
+            <LogoPokemonMixupRow height="34px" />
           ) : null}
         </button>
         <div className="page-title">
