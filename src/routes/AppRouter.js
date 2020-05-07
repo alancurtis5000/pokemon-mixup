@@ -9,7 +9,8 @@ import StyleGuide from '../pages/StyleGuide/StyleGuide';
 const AppRouter = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={StyleGuide} />
+      <Route path="/" exact component={Landing} />
+      <Route path="/Styles" component={StyleGuide} />
       <Route path="/Landing" component={Landing} />
       <Route path="/Page1" component={Page1} />
       <Route path="/page2" component={Page2} />
