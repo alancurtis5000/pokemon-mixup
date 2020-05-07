@@ -7,3 +7,34 @@ body {
 .active {
   color: $logo-yellow;
 }
+
+:focus {
+  outline: $logo-yellow solid 4px;
+  outline-offset: -4px;
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid transparent;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-action {
+  @extend .btn;
+  background-color: $logo-yellow;
+  border-color: red;
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: $pb-white;
+  border-color: $outline-black;
+}
+
+.btn-secondary {
+  @extend .btn;
+  background-color: $pb-red;
+  border-color: $outline-black;
+}

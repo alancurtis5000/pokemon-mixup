@@ -1,29 +1,49 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
-import LogoPokemonMixupCol from '../../icons/LogoPokemonMixupCol';
 import LogoPokemonMixupRow from '../../icons/LogoPokemonMixupRow';
 import LogoPokemonMixupInitials from '../../icons/LogoPokemonMixupInitials';
 
 const Header = (props) => {
-  const { pageTitle } = props;
+  const { pageTitle, screenSize, history } = props;
+  const goHome = () => {
+    console.log('clicked');
+    document.activeElement.blur();
+    history.push('/');
+  };
   return (
     <div className="Header">
-      <LogoPokemonMixupInitials height="40px" />
-      <LogoPokemonMixupRow height="40px" />
-      <LogoPokemonMixupCol height="40px" />
-      Header
-      <NavLink exact to="/">
-        Landing
-      </NavLink>
-      <NavLink exact to="/Page1">
-        Page1
-      </NavLink>
-      <NavLink exact to="/page2">
-        Page2
-      </NavLink>
-      <PageTitle pageTitle={pageTitle} />
+      <div className="grid">
+        <button type="button" className="btn" onClick={goHome}>
+          {screenSize.size === 'mobile' ? (
+            <LogoPokemonMixupInitials height="36px" />
+          ) : null}
+          {screenSize.size === 'tablet' || screenSize.size === 'desktop' ? (
+            <LogoPokemonMixupRow height="36px" />
+          ) : null}
+        </button>
+        <div className="page-title">
+          <PageTitle pageTitle={pageTitle} />
+          <button type="button" className="btn-action">
+            Action
+          </button>
+          <button type="button" className="btn-primary">
+            Primary
+          </button>
+          <button type="button" className="btn-secondary">
+            Secondary
+          </button>
+        </div>
+        <div className="login">P</div>
+      </div>
     </div>
   );
 };
-export default Header;
+
+const mapStateToProps = (state) => {
+  return {
+    screenSize: state.screenSize,
+  };
+};
+export default withRouter(connect(mapStateToProps)(Header));
