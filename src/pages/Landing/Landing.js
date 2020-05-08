@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import helpers from '../../helpers/helplers';
+import Logo from '../../icons/LogoPokemonMixupCol';
 
 const Landing = () => {
-  const pageTitle = 'Welcome';
+  const pageTitle = 'Welcome to';
   const [uiContainerWidth, setUiContainerWidth] = useState(160);
   const [uiContainerHeight, setUiContainerHeight] = useState(90);
 
@@ -42,6 +43,21 @@ const Landing = () => {
           alt="banner"
           style={{ width: uiContainerWidth, height: uiContainerHeight }}
         />
+        <Logo className="logo" />
+        <div className="buttons">
+          <button type="button" className="btn-primary">
+            Login
+          </button>
+          <button type="button" className="btn-primary">
+            Play As Guest
+          </button>
+          <button type="button" className="btn-primary">
+            Intro
+          </button>
+          <button type="button" className="btn-primary">
+            High Scores
+          </button>
+        </div>
       </div>
     </div>
   );
