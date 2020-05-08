@@ -6,6 +6,9 @@ const Landing = () => {
   return (
     <div className="Landing">
       <Header pageTitle={pageTitle} />
+      <div className="container">
+        <img className="image" src="./images/banner.png" alt="banner" />
+      </div>
     </div>
   );
 };
