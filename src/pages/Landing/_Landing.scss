@@ -1,20 +1,10 @@
 .Landing {
-  background-color: purple;
-  > .container {
-    background-color: yellow;
-    width: calc(90vw); /* 90% of viewport width */
-    height: calc(50.625vw); /* ratio = 9/16 * 90 = 50.625 */
-    max-height: calc(87vh);
-    max-width: calc(154vh); /* 16/9 * 90 = 160 */
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    .image {
-      object-fit: cover;
-      height: 100%;
-      grid-row: 1 / -1;
-      grid-column: 1 / -1;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .container {
+    background-color: green;
+    display: flex;
+    justify-content: center;
   }
 }

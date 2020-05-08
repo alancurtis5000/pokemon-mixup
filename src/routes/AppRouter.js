@@ -10,7 +10,7 @@ import AspectRatio from '../pages/AspectRatio/AspectRatio';
 const AppRouter = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={AspectRatio} />
+      <Route path="/" exact component={Landing} />
       <Route path="/AspectRatio" component={AspectRatio} />
       <Route path="/Styles" component={StyleGuide} />
       <Route path="/Landing" component={Landing} />
