@@ -1,0 +1,13 @@
+.AspectRatio {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  #intro-container {
+    background-color: green;
+    #intro-bg {
+      object-fit: contain;
+      // height: 200px;
+    }
+  }
+}
