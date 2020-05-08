@@ -8,15 +8,18 @@ export class App extends React.Component {
   componentDidMount() {
     this.handleWindowSizeChange();
     window.addEventListener('resize', this.handleWindowSizeChange);
-    window.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      document.activeElement.blur();
-    });
+    window.addEventListener('mousedown', this.handleMouseDown);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener('resize', this.handleMouseDown);
   }
+
+  handleMouseDown = (e) => {
+    e.preventDefault();
+    document.activeElement.blur();
+  };
 
   handleWindowSizeChange = () => {
     const width = window.innerWidth;
