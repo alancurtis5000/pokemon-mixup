@@ -3,9 +3,9 @@
   > .container {
     background-color: yellow;
     width: calc(90vw); /* 90% of viewport width */
-    height: 50.625vw; /* ratio = 9/16 * 90 = 50.625 */
-    max-height: calc(90vh);
-    max-width: calc(160vh); /* 16/9 * 90 = 160 */
+    height: calc(50.625vw); /* ratio = 9/16 * 90 = 50.625 */
+    max-height: calc(87vh);
+    max-width: calc(154vh); /* 16/9 * 90 = 160 */
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
