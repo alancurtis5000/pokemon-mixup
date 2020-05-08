@@ -7,24 +7,26 @@ const AspectRatio = () => {
   const [uiContainerHeight, setUiContainerHeight] = useState(90);
 
   const updateDimensions = () => {
-    const maxWidth = Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0,
-    ); // view w
-    const maxHeight = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0,
-    ); // view h
+    const aspectRatio = 16 / 9;
+    const paddingWidth = 0;
+    const paddingHeight = 41;
+    const maxWidth =
+      Math.max(document.documentElement.clientWidth, window.innerWidth || 0) -
+      paddingWidth; // view w
+    const maxHeight =
+      Math.max(document.documentElement.clientHeight, window.innerHeight || 0) -
+      paddingHeight; // view h
 
     let width;
     let height;
 
-    width = maxWidth - 0.1;
-    height = Math.floor((9 * maxWidth) / 16) - 0.1;
+    width = maxWidth;
+    height = Math.floor(maxWidth / aspectRatio);
 
-    if (height >= maxHeight - 40) {
-      width = Math.floor((16 * maxHeight) / 9) - 40;
-      height = maxHeight - 40;
+    if (height >= maxHeight) {
+      // width = Math.floor((16 * maxHeight) / 9);
+      width = Math.floor(maxHeight * aspectRatio);
+      height = maxHeight;
     }
 
     setUiContainerWidth(`${width}px`);
@@ -42,23 +44,16 @@ const AspectRatio = () => {
   return (
     <div className="AspectRatio">
       <Header pageTitle={pageTitle} />
-      {/* <button type="button" onClick={() => console.log({})}>
-        Log
-      </button>
-      <button type="button" onClick={() => {}}>
-        changeHeight
-      </button> */}
       <div
-        id="intro-container"
         className="container"
         style={{ width: uiContainerWidth, height: uiContainerHeight }}
       >
-        {/* <img
-          id="intro-bg"
+        <img
           className="image"
           src="./images/banner.png"
           alt="banner"
-        /> */}
+          style={{ width: uiContainerWidth, height: uiContainerHeight }}
+        />
       </div>
     </div>
   );
