@@ -28,3 +28,29 @@
     }
   }
 }
+
+@media (min-width: $tablet-breakpoint) {
+  .Landing {
+    .container {
+      .buttons {
+        grid-template-columns: 1fr 1fr;
+        * {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .Landing {
+    .container {
+      .buttons {
+        grid-template-columns: 1fr 1fr 1fr;
+        * {
+          color: yellow;
+        }
+      }
+    }
+  }
+}

@@ -26,4 +26,6 @@ $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
 
-$desktop-breakpoint: 45rem;
+// 45 rem = 720 px. formula px * 16
+$desktop-breakpoint: 75rem;
+$tablet-breakpoint: 45rem;
