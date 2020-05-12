@@ -6,11 +6,13 @@ import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import Landing from '../pages/Landing/Landing';
 import StyleGuide from '../pages/StyleGuide/StyleGuide';
 import AspectRatio from '../pages/AspectRatio/AspectRatio';
+import Game from '../pages/Game/Game';
 
 const AppRouter = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" exact component={Landing} />
+      <Route path="/Game" component={Game} />
       <Route path="/AspectRatio" component={AspectRatio} />
       <Route path="/Styles" component={StyleGuide} />
       <Route path="/Landing" component={Landing} />

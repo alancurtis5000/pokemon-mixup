@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import helpers from '../../helpers/helplers';
 import Logo from '../../icons/LogoPokemonMixupCol';
 
-const Landing = () => {
+const Landing = (props) => {
   const pageTitle = 'Welcome to';
   const [uiContainerWidth, setUiContainerWidth] = useState(160);
   const [uiContainerHeight, setUiContainerHeight] = useState(90);
@@ -30,6 +31,11 @@ const Landing = () => {
     };
   }, []);
 
+  const handlePlayAsGuest = () => {
+    const { history } = props;
+    history.push('/Game');
+  };
+
   return (
     <div className="Landing">
       <Header pageTitle={pageTitle} />
@@ -48,7 +54,11 @@ const Landing = () => {
           <button type="button" className="btn-primary">
             Login
           </button>
-          <button type="button" className="btn-primary">
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={handlePlayAsGuest}
+          >
             Play As Guest
           </button>
           <button type="button" className="btn-primary">
@@ -62,4 +72,4 @@ const Landing = () => {
     </div>
   );
 };
-export default Landing;
+export default withRouter(Landing);
