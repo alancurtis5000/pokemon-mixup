@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import helpers from '../../helpers/helplers';
 
-const PlayableAread = (props) => {
+const PlayableArea = (props) => {
   const { aspectRatio, paddingWidth, paddingHeight, children } = props;
   const [uiContainerWidth, setUiContainerWidth] = useState(160);
   const [uiContainerHeight, setUiContainerHeight] = useState(90);
@@ -29,22 +29,23 @@ const PlayableAread = (props) => {
   return (
     <div
       className="PlayableArea"
+      id="PlayableArea"
       style={{ width: uiContainerWidth, height: uiContainerHeight }}
     >
       {children}
     </div>
   );
 };
-export default PlayableAread;
+export default PlayableArea;
 
-PlayableAread.defaultProps = {
+PlayableArea.defaultProps = {
   aspectRatio: 16 / 9,
   paddingWidth: 10,
   paddingHeight: 41,
   children: <h1>Child</h1>,
 };
 
-PlayableAread.propTypes = {
+PlayableArea.propTypes = {
   aspectRatio: PropTypes.number,
   paddingWidth: PropTypes.number,
   paddingHeight: PropTypes.number,
