@@ -15,13 +15,23 @@ const maintainAspectRationOffScreenSize = (
   let width;
   let height;
 
-  width = maxWidth;
-  height = Math.floor(maxWidth / aspectRatio);
+  const html = document.getElementsByTagName('html')[0];
+  if (html) {
+    const htmlWidth = html.offsetWidth;
+    if (htmlWidth !== width) {
+      width = htmlWidth;
+      height = Math.floor(htmlWidth / aspectRatio);
+    } else {
+      width = maxWidth;
+      height = Math.floor(maxWidth / aspectRatio);
+    }
+  }
 
   if (height >= maxHeight) {
     width = Math.floor(maxHeight * aspectRatio);
     height = maxHeight;
   }
+
   return { width, height };
 };
 
