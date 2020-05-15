@@ -14,7 +14,7 @@ const AppRouter = () => (
     <Header />
     <Switch>
       <Route path="/" exact component={Landing} />
-      <Route path="/:Game" component={Game} />
+      <Route path="/Game" component={Game} />
       <Route path="/AspectRatio" component={AspectRatio} />
       <Route path="/Styles" component={StyleGuide} />
       <Route path="/Landing" component={Landing} />
