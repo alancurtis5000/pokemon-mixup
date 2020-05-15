@@ -1,12 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Header from '../../components/Header/Header';
 import PlayableArea from '../../components/PlayableArea/PlayableArea';
 import Logo from '../../icons/LogoPokemonMixupCol';
 
 const Landing = (props) => {
-  const pageTitle = 'Welcome to';
-
   const handlePlayAsGuest = () => {
     const { history } = props;
     history.push('/Game');
@@ -14,7 +11,6 @@ const Landing = (props) => {
 
   return (
     <div className="Landing">
-      <Header pageTitle={pageTitle} />
       <PlayableArea>
         <div className="container">
           <img className="image" src="./images/banner.png" alt="banner" />

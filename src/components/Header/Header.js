@@ -6,7 +6,7 @@ import LogoPokemonMixupRow from '../../icons/LogoPokemonMixupRow';
 import LogoPokemonMixupInitials from '../../icons/LogoPokemonMixupInitials';
 
 const Header = (props) => {
-  const { pageTitle, screenSize, history } = props;
+  const { screenSize, history } = props;
   const goHome = () => {
     console.log('clicked');
     history.push('/');
@@ -24,7 +24,7 @@ const Header = (props) => {
           ) : null}
         </button>
         <div className="page-title">
-          <PageTitle pageTitle={pageTitle} />
+          <PageTitle />
         </div>
         <div className="login">P</div>
       </div>

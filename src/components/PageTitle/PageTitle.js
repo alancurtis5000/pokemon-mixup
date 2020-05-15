@@ -1,16 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 const Header = (props) => {
-  const { pageTitle } = props;
+  const { location } = props;
+  let pageTitle = '';
+
+  switch (location.pathname) {
+    case '/':
+      pageTitle = 'Welcome';
+      break;
+    case '/Game':
+      pageTitle = 'Game';
+      break;
+    default:
+      break;
+  }
+
   return <div className="PageTitle">{pageTitle}</div>;
 };
-export default Header;
-
-Header.defaultProps = {
-  pageTitle: 'cheese',
-};
-
-Header.propTypes = {
-  pageTitle: PropTypes.string,
-};
+export default withRouter(Header);
