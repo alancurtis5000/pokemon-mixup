@@ -6,10 +6,12 @@ import LogoPokemonMixupRow from '../../icons/LogoPokemonMixupRow';
 import LogoPokemonMixupInitials from '../../icons/LogoPokemonMixupInitials';
 
 const Header = (props) => {
-  const { screenSize, history } = props;
+  const { screenSize, history, location } = props;
   const goHome = () => {
-    console.log('clicked');
-    history.push('/');
+    const path = '/';
+    if (location.pathname !== path) {
+      history.push(path);
+    }
   };
 
   return (
