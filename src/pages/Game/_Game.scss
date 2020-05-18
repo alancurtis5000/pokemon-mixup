@@ -9,5 +9,35 @@
     width: 100%;
     height: 100%;
     background-color: purple;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 7% 70% 1fr;
+    .background-image {
+      width: 100%;
+      height: 100%;
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+    }
+    .player-pokemon-image {
+      grid-row: 2/ 3;
+      grid-column: 1;
+      justify-self: center;
+      align-self: flex-end;
+      padding-bottom: 4%;
+    }
+    .player-name {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    .opponent-pokemon-image {
+      grid-row: 2 / 3;
+      grid-column: 3;
+      justify-self: center;
+      align-self: flex-end;
+      padding-bottom: 4%;
+    }
+    .opponent-name {
+      grid-row: 1;
+      grid-column: 3;
+    }
   }
 }

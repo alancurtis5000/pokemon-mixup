@@ -10,6 +10,7 @@ export const initalState = {
       hp: '2',
       attack: '2',
       image: '/images/bulbasaur.png',
+      weight: 100,
     },
     pokemon: [
       {
@@ -17,18 +18,21 @@ export const initalState = {
         hp: '2',
         attack: '2',
         image: '/images/bulbasaur.png',
+        weight: 100,
       },
       {
         name: 'blip',
         hp: '1',
         attack: '2',
         image: '/images/bulbasaur.png',
+        weight: 100,
       },
       {
         name: 'limber',
         hp: '3',
         attack: '3',
         image: '/images/bulbasaur.png',
+        weight: 100,
       },
     ],
   },
