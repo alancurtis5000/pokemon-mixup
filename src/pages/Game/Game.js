@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PokemonStats from '../../components/PokemonStats/PokemonStats';
-
+import GameStats from '../../components/GameStats/GameStats';
 import PlayableArea from '../../components/PlayableArea/PlayableArea';
 
 const Game = (props) => {
@@ -35,6 +35,9 @@ const Game = (props) => {
             alt="stadium"
             className="background-image"
           />
+          <div className="game-stats">
+            <GameStats />
+          </div>
           <img
             className="player-pokemon-image"
             src={player.data.activePokemon.image}
