@@ -32,12 +32,9 @@
         width: 90%;
       }
     }
-    .player-pokemon-image {
+    > .player-pokemon-image {
       grid-row: 2/ 3;
       grid-column: 1;
-      justify-self: center;
-      align-self: flex-end;
-      padding-bottom: 4%;
     }
     .player-name {
       grid-row: 1;
@@ -51,12 +48,9 @@
       width: 100%;
       height: 100%;
     }
-    .opponent-pokemon-image {
+    > .opponent-pokemon-image {
       grid-row: 2 / 3;
       grid-column: 3;
-      justify-self: center;
-      align-self: flex-end;
-      padding-bottom: 4%;
     }
     .opponent-name {
       grid-row: 1;

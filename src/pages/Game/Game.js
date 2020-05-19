@@ -3,24 +3,10 @@ import { connect } from 'react-redux';
 import PokemonStats from '../../components/PokemonStats/PokemonStats';
 import GameStats from '../../components/GameStats/GameStats';
 import PlayableArea from '../../components/PlayableArea/PlayableArea';
+import PokemonImage from '../../components/PokemonImage/PokemonImage';
 
 const Game = (props) => {
   const { player, opponent } = props;
-
-  const calculateWeight = (weight) => {
-    let percent = '30%';
-    switch (true) {
-      case weight < 20:
-        percent = '30%';
-        break;
-      case weight < 200:
-        percent = '90%';
-        break;
-      default:
-        break;
-    }
-    return percent;
-  };
 
   const attack = () => {
     console.log('attack');
@@ -38,25 +24,20 @@ const Game = (props) => {
           <div className="game-stats">
             <GameStats />
           </div>
-          <img
-            className="player-pokemon-image"
-            src={player.data.activePokemon.image}
-            alt="pokemon"
-            style={{ width: calculateWeight(player.data.activePokemon.weight) }}
-          />
+
+          {/* Player */}
+          <div className="player-pokemon-image">
+            <PokemonImage pokemon={player.data.activePokemon} />
+          </div>
           <div className="player-name">{player.data.name}</div>
           <div className="player-pokemon-stats">
             <PokemonStats pokemon={player.data.activePokemon} />
           </div>
 
-          <img
-            className="opponent-pokemon-image"
-            src={opponent.data.activePokemon.image}
-            alt="pokemon"
-            style={{
-              width: calculateWeight(opponent.data.activePokemon.weight),
-            }}
-          />
+          {/* Opponent */}
+          <div className="opponent-pokemon-image">
+            <PokemonImage pokemon={opponent.data.activePokemon} />
+          </div>
           <div className="opponent-name">{opponent.data.name}</div>
           <div className="opponent-pokemon-stats">
             <PokemonStats pokemon={opponent.data.activePokemon} />
