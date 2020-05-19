@@ -25,11 +25,13 @@
       grid-row: 3;
       grid-column: 2;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: green;
       button {
         width: 90%;
+        margin-top: 3px;
       }
     }
     > .player-pokemon-image {

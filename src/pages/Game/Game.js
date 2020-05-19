@@ -14,6 +14,10 @@ const Game = (props) => {
     attackOpponent();
   };
 
+  const oppAttack = () => {
+    console.log('attack');
+  };
+
   return (
     <div className="Game">
       <PlayableArea aspectRatio={568 / 280} paddingWidth={0} paddingHeight={41}>
@@ -47,6 +51,9 @@ const Game = (props) => {
           <div className="interface">
             <button type="button" className="attack" onClick={attack}>
               Attack
+            </button>
+            <button type="button" className="attack" onClick={oppAttack}>
+              Opp Attack
             </button>
           </div>
         </div>
