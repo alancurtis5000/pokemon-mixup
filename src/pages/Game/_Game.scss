@@ -17,6 +17,17 @@
       grid-row: 1 / -1;
       grid-column: 1 / -1;
     }
+    .interface {
+      grid-row: 3;
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      button {
+        width: 90%;
+      }
+    }
     .player-pokemon-image {
       grid-row: 2/ 3;
       grid-column: 1;
@@ -28,6 +39,12 @@
       grid-row: 1;
       grid-column: 1;
     }
+    .player-pokemon-stats {
+      grid-row: 3;
+      grid-column: 1;
+      width: 100%;
+      height: 100%;
+    }
     .opponent-pokemon-image {
       grid-row: 2 / 3;
       grid-column: 3;
@@ -38,6 +55,12 @@
     .opponent-name {
       grid-row: 1;
       grid-column: 3;
+    }
+    .opponent-pokemon-stats {
+      grid-row: 3;
+      grid-column: 3;
+      width: 100%;
+      height: 100%;
     }
   }
 }

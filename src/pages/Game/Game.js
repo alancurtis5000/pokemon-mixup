@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PokemonStats from '../../components/PokemonStats/PokemonStats';
 
 import PlayableArea from '../../components/PlayableArea/PlayableArea';
 
@@ -21,6 +22,10 @@ const Game = (props) => {
     return percent;
   };
 
+  const attack = () => {
+    console.log('attack');
+  };
+
   return (
     <div className="Game">
       <PlayableArea aspectRatio={568 / 280} paddingWidth={0} paddingHeight={41}>
@@ -37,6 +42,10 @@ const Game = (props) => {
             style={{ width: calculateWeight(player.data.activePokemon.weight) }}
           />
           <div className="player-name">{player.data.name}</div>
+          <div className="player-pokemon-stats">
+            <PokemonStats pokemon={player.data.activePokemon} />
+          </div>
+
           <img
             className="opponent-pokemon-image"
             src={opponent.data.activePokemon.image}
@@ -46,6 +55,14 @@ const Game = (props) => {
             }}
           />
           <div className="opponent-name">{opponent.data.name}</div>
+          <div className="opponent-pokemon-stats">
+            <PokemonStats pokemon={opponent.data.activePokemon} />
+          </div>
+          <div className="interface">
+            <button type="button" className="attack" onClick={attack}>
+              Attack
+            </button>
+          </div>
         </div>
       </PlayableArea>
     </div>
