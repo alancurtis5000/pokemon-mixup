@@ -5,15 +5,23 @@ const maintainAspectRationOffScreenSize = (
   paddingWidth,
   paddingHeight,
 ) => {
-  const maxWidth =
+  let maxWidth =
     Math.max(document.documentElement.clientWidth, window.innerWidth || 0) -
     paddingWidth; // view w
-  const maxHeight =
+  let maxHeight =
     Math.max(document.documentElement.clientHeight, window.innerHeight || 0) -
     paddingHeight; // view h
 
   let width;
   let height;
+
+  // overide to limit max height and width if screen is really big.
+  if (maxWidth > 1200) {
+    maxWidth = 1200;
+  }
+  if (maxHeight > 800) {
+    maxHeight = 800;
+  }
 
   const html = document.getElementsByTagName('html')[0];
   if (html) {
