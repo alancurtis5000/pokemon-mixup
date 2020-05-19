@@ -1,41 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import helpers from '../../helpers/helplers';
 
-const PlayableArea = (props) => {
-  const { aspectRatio, paddingWidth, paddingHeight, children } = props;
-  const [uiContainerWidth, setUiContainerWidth] = useState(160);
-  const [uiContainerHeight, setUiContainerHeight] = useState(90);
+class PlayableArea extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      uiContainerWidth: `${160}px`,
+      uiContainerHeight: `${90}px`,
+    };
+  }
 
-  const updateDimensions = () => {
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+    this.updateDimensions();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  updateDimensions = () => {
+    const { aspectRatio, paddingWidth, paddingHeight } = this.props;
+
     const size = helpers.maintainAspectRationOffScreenSize(
       aspectRatio,
       paddingWidth,
       paddingHeight,
     );
-
-    setUiContainerWidth(`${size.width}px`);
-    setUiContainerHeight(`${size.height}px`);
+    this.setState({
+      uiContainerWidth: `${size.width}px`,
+      uiContainerHeight: `${size.height}px`,
+    });
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', updateDimensions);
-    updateDimensions();
-    return () => {
-      window.removeEventListener('resize', updateDimensions);
-    };
-  }, []);
+  render() {
+    const { children } = this.props;
+    const { uiContainerWidth, uiContainerHeight } = this.state;
 
-  return (
-    <div
-      className="PlayableArea"
-      id="PlayableArea"
-      style={{ width: uiContainerWidth, height: uiContainerHeight }}
-    >
-      {children}
-    </div>
-  );
-};
+    return (
+      <div
+        className="PlayableArea"
+        id="PlayableArea"
+        style={{ width: uiContainerWidth, height: uiContainerHeight }}
+      >
+        {children}
+      </div>
+    );
+  }
+}
+
 export default PlayableArea;
 
 PlayableArea.defaultProps = {
