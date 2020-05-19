@@ -26,6 +26,9 @@ const Header = (props) => {
           ) : null}
         </button>
         <div className="page-title">
+          <button type="button" onClick={() => console.log(props.state)}>
+            Log
+          </button>
           <PageTitle />
         </div>
         <div className="login">P</div>
@@ -37,6 +40,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => {
   return {
     screenSize: state.screenSize,
+    state,
   };
 };
 export default withRouter(connect(mapStateToProps)(Header));

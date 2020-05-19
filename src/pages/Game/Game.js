@@ -4,12 +4,14 @@ import PokemonStats from '../../components/PokemonStats/PokemonStats';
 import GameStats from '../../components/GameStats/GameStats';
 import PlayableArea from '../../components/PlayableArea/PlayableArea';
 import PokemonImage from '../../components/PokemonImage/PokemonImage';
+import { attackOpponent as attackOpponentAction } from '../../actions/opponent';
 
 const Game = (props) => {
-  const { player, opponent } = props;
+  const { player, opponent, attackOpponent } = props;
 
   const attack = () => {
     console.log('attack');
+    attackOpponent();
   };
 
   return (
@@ -53,10 +55,15 @@ const Game = (props) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  attackOpponent: () => dispatch(attackOpponentAction()),
+  dispatch,
+});
+
 const mapStateToProps = (state) => {
   return {
     player: state.player,
     opponent: state.opponent,
   };
 };
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

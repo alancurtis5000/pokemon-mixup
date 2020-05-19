@@ -7,7 +7,8 @@ export const initalState = {
     name: 'Mean Guy',
     activePokemon: {
       name: 'zip',
-      hp: 2,
+      hp: 33,
+      currentHp: 33,
       attack: 2,
       image: '/images/bulbasaur.png',
       weight: 100,
@@ -22,7 +23,7 @@ export const initalState = {
       },
       {
         name: 'blip',
-        hp: '1',
+        hp: 1,
         attack: 2,
         image: '/images/bulbasaur.png',
         weight: 100,
@@ -40,8 +41,10 @@ export const initalState = {
 
 const opponentReducer = (state = initalState, action) => {
   switch (action.type) {
-    case types.UPDATE_SCREEN_SIZE:
-      return { ...action.payload };
+    case types.ATTACK:
+      return { ...state, ...action.payload };
+    case types.REPLACE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

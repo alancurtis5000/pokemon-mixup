@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const PokemonStats = (props) => {
   const { pokemon } = props;
-  const { name, type, hp, attack, defense, weakness } = pokemon;
+  const { name, type, currentHp, attack, defense, weakness } = pokemon;
   return (
     <div className="PokemonStats">
       <div className="name">{name}</div>
-      <div className="hp">{`Health: ${hp}`}</div>
+      <div className="hp">{`Health: ${currentHp}`}</div>
       <div className="attack">{`Attack: ${attack}`}</div>
       <div className="type">{type}</div>
       <div className="defense">{defense}</div>
@@ -21,7 +21,7 @@ PokemonStats.defaultProps = {
   pokemon: {
     name: 'Pikachu',
     type: 'Electric',
-    hp: 70,
+    currentHp: 70,
     attack: 50,
     defense: 2,
     weakness: 'none',
@@ -33,7 +33,7 @@ PokemonStats.propTypes = {
   pokemon: PropTypes.shape({
     name: PropTypes.string,
     type: PropTypes.string,
-    hp: PropTypes.number,
+    currentHp: PropTypes.number,
     attack: PropTypes.number,
     defense: PropTypes.number,
     weakness: PropTypes.string,
