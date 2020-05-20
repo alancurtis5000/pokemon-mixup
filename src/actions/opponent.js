@@ -1,6 +1,6 @@
 export const types = {
-  ATTACK: 'ATTACK',
-  REPLACE: 'REPLACE',
+  ATTACK_OPPONENT: 'ATTACK_OPPONENT',
+  REPLACE_OPPONENT: 'REPLACE_OPPONENT',
 };
 
 const replacePokemon = () => (dispatch, getState) => {
@@ -9,7 +9,7 @@ const replacePokemon = () => (dispatch, getState) => {
   opponent.data.activePokemon.currentHp = opponent.data.activePokemon.hp;
   const payload = opponent;
   dispatch({
-    type: types.REPLACE,
+    type: types.REPLACE_OPPONENT,
     payload,
   });
 };
@@ -24,7 +24,7 @@ export const attackOpponent = () => (dispatch, getState) => {
     dispatch(replacePokemon());
   } else {
     dispatch({
-      type: types.ATTACK,
+      type: types.ATTACK_OPPONENT,
       payload,
     });
   }

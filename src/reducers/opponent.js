@@ -9,7 +9,7 @@ export const initalState = {
       name: 'zip',
       hp: 33,
       currentHp: 33,
-      attack: 2,
+      attack: 5,
       image: '/images/bulbasaur.png',
       weight: 100,
     },
@@ -17,7 +17,7 @@ export const initalState = {
       {
         name: 'zip',
         hp: 36,
-        attack: 2,
+        attack: 10,
         image: '/images/bulbasaur.png',
         weight: 100,
       },
@@ -41,9 +41,9 @@ export const initalState = {
 
 const opponentReducer = (state = initalState, action) => {
   switch (action.type) {
-    case types.ATTACK:
+    case types.ATTACK_OPPONENT:
       return { ...state, ...action.payload };
-    case types.REPLACE:
+    case types.REPLACE_OPPONENT:
       return { ...state, ...action.payload };
     default:
       return state;

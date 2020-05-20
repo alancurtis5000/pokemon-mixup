@@ -16,9 +16,9 @@ export const initalState = {
     score: 0,
     pokemon: [
       {
-        name: 'pik',
-        hp: 23,
-        attack: 23,
+        name: 'cherry',
+        hp: 30,
+        attack: 10,
         image: '/images/bulbasaur.png',
         weight: 10,
       },
@@ -42,7 +42,9 @@ export const initalState = {
 
 const playerReducer = (state = initalState, action) => {
   switch (action.type) {
-    case types.UPDATE_SCREEN_SIZE:
+    case types.ATTACK_PLAYER:
+      return { ...action.payload };
+    case types.REPLACE_PLAYER:
       return { ...action.payload };
     default:
       return state;
