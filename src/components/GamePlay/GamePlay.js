@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PokemonStats from '../PokemonStats/PokemonStats';
 import GameStats from '../GameStats/GameStats';
 import PlayableArea from '../PlayableArea/PlayableArea';
 import PokemonImage from '../PokemonImage/PokemonImage';
 import GameStart from '../GameStart/GameStart';
-import GameEnd from '../GameEnd/GameEnd';
 import { attackOpponent as attackOpponentAction } from '../../actions/opponent';
 import { attackPlayer as attackPlayerAction } from '../../actions/player';
 
 const GamePlay = (props) => {
-  const [time, setTime] = useState(3);
+  const [seconds, setSeconds] = useState(3);
+  const [isActive, setIsActive] = useState(true);
   const { player, opponent, attackOpponent, attackPlayer } = props;
 
   const attack = () => {
@@ -21,29 +21,29 @@ const GamePlay = (props) => {
     attackPlayer();
   };
 
-  const countDown = () => {
-    setTimeout(() => {
-      if (time <= 0) {
-        console.log('start Game');
-      } else {
-        setTime(time - 1);
-      }
-    }, 1000);
-  };
-  countDown();
+  useEffect(() => {
+    let interval = null;
+    if (isActive && seconds >= 0) {
+      interval = setInterval(() => {
+        setSeconds(seconds - 1);
+      }, 1000);
+    } else if (seconds <= 0) {
+      setIsActive(false);
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
 
   return (
     <div className="GamePlay">
       <PlayableArea aspectRatio={568 / 280} paddingWidth={0} paddingHeight={41}>
         <div className="container">
           {/* Start Count Down */}
-          <div className="start-countdown">
-            <GameStart time={time} />
-          </div>
+          <GameStart time={seconds} isOpen={isActive} />
           {/* End game Screen */}
-          <div className="end-screen">
+          {/* <div className="end-screen">
             <GameEnd />
-          </div>
+          </div> */}
           {/* game board */}
           <img
             src="images/stadium.png"
