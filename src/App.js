@@ -31,8 +31,11 @@ export class App extends React.Component {
       case width > 768:
         size = 'tablet';
         break;
-      case width > 0:
+      case width > 560:
         size = 'mobile';
+        break;
+      case width > 0:
+        size = 'tooSmall';
         break;
       default:
         break;
@@ -44,8 +47,15 @@ export class App extends React.Component {
   };
 
   render() {
+    const { screenSize } = this.props;
+
     return (
       <div className="App">
+        {screenSize.size === 'tooSmall' ? (
+          <div className="tooSmall">
+            please rotate or make your screen wider.
+          </div>
+        ) : null}
         <AppRouter />
       </div>
     );
