@@ -3,6 +3,7 @@ import { wonGame } from './game';
 export const types = {
   ATTACK_OPPONENT: 'ATTACK_OPPONENT',
   REPLACE_OPPONENT: 'REPLACE_OPPONENT',
+  RESET_OPPONENT: 'RESET_OPPONENT',
 };
 
 const replacePokemon = () => (dispatch, getState) => {
@@ -33,4 +34,10 @@ export const attackOpponent = () => (dispatch, getState) => {
       payload,
     });
   }
+};
+
+export const resetOpponent = () => (dispatch) => {
+  dispatch({
+    type: types.RESET_OPPONENT,
+  });
 };

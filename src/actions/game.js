@@ -1,6 +1,11 @@
+// import { resetOpponent } from './opponent';
+import { resetPlayer } from './player';
+import { resetOpponent } from './opponent';
+
 export const types = {
   START_GET_GAME: 'START_GET_GAME',
   END_GAME: 'END_GAME',
+  RESET_GAME: 'RESET_GAME',
 };
 
 export const startGetGame = () => (dispatch) => {
@@ -36,5 +41,13 @@ export const lostGame = () => (dispatch) => {
   dispatch({
     type: types.END_GAME,
     payload,
+  });
+};
+
+export const resetGame = () => (dispatch) => {
+  dispatch(resetPlayer());
+  dispatch(resetOpponent());
+  dispatch({
+    type: types.RESET_GAME,
   });
 };

@@ -13,6 +13,8 @@ const gameReducer = (state = initalState, action) => {
   switch (action.type) {
     case types.END_GAME:
       return { ...state, ...action.payload };
+    case types.RESET_GAME:
+      return { ...state, ...initalState };
     default:
       return state;
   }

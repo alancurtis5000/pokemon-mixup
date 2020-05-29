@@ -3,6 +3,7 @@ import { lostGame } from './game';
 export const types = {
   ATTACK_PLAYER: 'ATTACK_PLAYER',
   REPLACE_PLAYER: 'REPLACE_PLAYER',
+  RESET_PLAYER: 'RESET_PLAYER',
 };
 
 const replacePokemon = () => (dispatch, getState) => {
@@ -34,4 +35,10 @@ export const attackPlayer = () => (dispatch, getState) => {
       payload,
     });
   }
+};
+
+export const resetPlayer = () => (dispatch) => {
+  dispatch({
+    type: types.RESET_PLAYER,
+  });
 };
