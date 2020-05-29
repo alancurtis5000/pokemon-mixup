@@ -8,9 +8,10 @@ export const types = {
 
 const replacePokemon = () => (dispatch, getState) => {
   const { opponent } = getState();
-  opponent.data.activePokemon = opponent.data.pokemon.shift();
-  opponent.data.activePokemon.currentHp = opponent.data.activePokemon.hp;
-  const payload = opponent;
+  const opponentClone = { ...opponent };
+  opponentClone.data.activePokemon = opponent.data.pokemon.shift();
+  opponentClone.data.activePokemon.currentHp = opponent.data.activePokemon.hp;
+  const payload = opponentClone;
   dispatch({
     type: types.REPLACE_OPPONENT,
     payload,
@@ -20,10 +21,11 @@ const replacePokemon = () => (dispatch, getState) => {
 export const attackOpponent = () => (dispatch, getState) => {
   const playerAttackDamgage = getState().player.data.activePokemon.attack;
   const { opponent } = getState();
-  opponent.data.activePokemon.currentHp -= playerAttackDamgage;
-  const payload = opponent;
-  if (opponent.data.activePokemon.currentHp <= 0) {
-    if (opponent.data.pokemon.length === 0) {
+  const opponentClone = { ...opponent };
+  opponentClone.data.activePokemon.currentHp -= playerAttackDamgage;
+  const payload = opponentClone;
+  if (opponentClone.data.activePokemon.currentHp <= 0) {
+    if (opponentClone.data.pokemon.length === 0) {
       dispatch(wonGame());
     } else {
       dispatch(replacePokemon());

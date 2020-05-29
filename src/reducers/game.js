@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash/cloneDeep';
 import { types } from '../actions/game';
 
 export const initalState = {
@@ -9,14 +10,15 @@ export const initalState = {
   },
 };
 
-const gameReducer = (state = initalState, action) => {
+const gameReducer = (state = cloneDeep(initalState), action) => {
+  const stateClone = cloneDeep(state);
   switch (action.type) {
     case types.END_GAME:
-      return { ...state, ...action.payload };
+      return { ...stateClone, ...cloneDeep(action.payload) };
     case types.RESET_GAME:
-      return { ...state, ...initalState };
+      return { ...stateClone, ...cloneDeep(initalState) };
     default:
-      return state;
+      return stateClone;
   }
 };
 
