@@ -10,6 +10,9 @@ const GameEnd = (props) => {
   if (game.data.status === 'gameOver') {
     tl.to('.GameEnd', { x: '100%', duration: 0.01 });
     tl.to('.GameEnd', { opacity: 1, duration: 1 });
+  } else {
+    tl.to('.GameEnd', { opacity: 0, duration: 1 });
+    tl.to('.GameEnd', { x: '-100%', duration: 0.01 });
   }
 
   const handlePlayAgain = () => {
