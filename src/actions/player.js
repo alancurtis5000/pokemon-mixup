@@ -1,3 +1,5 @@
+import { lostGame } from './game';
+
 export const types = {
   ATTACK_PLAYER: 'ATTACK_PLAYER',
   REPLACE_PLAYER: 'REPLACE_PLAYER',
@@ -21,7 +23,11 @@ export const attackPlayer = () => (dispatch, getState) => {
   const payload = player;
   if (player.data.activePokemon.currentHp <= 0) {
     console.log('replace pokemon');
-    dispatch(replacePokemon());
+    if (player.data.pokemon.length === 0) {
+      dispatch(lostGame());
+    } else {
+      dispatch(replacePokemon());
+    }
   } else {
     dispatch({
       type: types.ATTACK_PLAYER,

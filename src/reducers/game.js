@@ -3,13 +3,16 @@ import { types } from '../actions/game';
 export const initalState = {
   isPending: false,
   error: '',
-  items: [],
+  data: {
+    status: 'pending', // gameOver, inProgress
+    how: '', // lost , won
+  },
 };
 
 const gameReducer = (state = initalState, action) => {
   switch (action.type) {
-    case types.UPDATE_SCREEN_SIZE:
-      return { ...action.payload };
+    case types.END_GAME:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

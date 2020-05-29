@@ -11,13 +11,6 @@
     background-color: purple;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 7% 70% 1fr;
-    .end-screen {
-      width: 100%;
-      height: 100%;
-      grid-row: 1 / -1;
-      grid-column: 1 / -1;
-      z-index: 200;
-    }
     .background-image {
       width: 100%;
       height: 100%;

@@ -5,11 +5,13 @@ import GameStats from '../GameStats/GameStats';
 import PlayableArea from '../PlayableArea/PlayableArea';
 import PokemonImage from '../PokemonImage/PokemonImage';
 import GameStart from '../GameStart/GameStart';
+import GameEnd from '../GameEnd/GameEnd';
+
 import { attackOpponent as attackOpponentAction } from '../../actions/opponent';
 import { attackPlayer as attackPlayerAction } from '../../actions/player';
 
 const GamePlay = (props) => {
-  const [seconds, setSeconds] = useState(3);
+  const [seconds, setSeconds] = useState(1);
   const [isActive, setIsActive] = useState(true);
   const { player, opponent, attackOpponent, attackPlayer } = props;
 
@@ -41,9 +43,7 @@ const GamePlay = (props) => {
           {/* Start Count Down */}
           <GameStart time={seconds} isOpen={isActive} />
           {/* End game Screen */}
-          {/* <div className="end-screen">
-            <GameEnd />
-          </div> */}
+          <GameEnd />
           {/* game board */}
           <img
             src="images/stadium.png"

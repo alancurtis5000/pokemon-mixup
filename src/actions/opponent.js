@@ -1,3 +1,5 @@
+import { wonGame } from './game';
+
 export const types = {
   ATTACK_OPPONENT: 'ATTACK_OPPONENT',
   REPLACE_OPPONENT: 'REPLACE_OPPONENT',
@@ -20,8 +22,11 @@ export const attackOpponent = () => (dispatch, getState) => {
   opponent.data.activePokemon.currentHp -= playerAttackDamgage;
   const payload = opponent;
   if (opponent.data.activePokemon.currentHp <= 0) {
-    console.log('replace pokemon');
-    dispatch(replacePokemon());
+    if (opponent.data.pokemon.length === 0) {
+      dispatch(wonGame());
+    } else {
+      dispatch(replacePokemon());
+    }
   } else {
     dispatch({
       type: types.ATTACK_OPPONENT,
