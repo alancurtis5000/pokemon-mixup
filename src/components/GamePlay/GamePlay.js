@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { TimelineLite, Power1 } from 'gsap';
 import PokemonStats from '../PokemonStats/PokemonStats';
 import GameStats from '../GameStats/GameStats';
 import PlayableArea from '../PlayableArea/PlayableArea';
@@ -13,14 +14,127 @@ import { attackPlayer as attackPlayerAction } from '../../actions/player';
 const GamePlay = (props) => {
   const [seconds, setSeconds] = useState(1);
   const [isActive, setIsActive] = useState(true);
-  const { player, opponent, attackOpponent, attackPlayer } = props;
+  const { player, opponent, attackOpponent, attackPlayer, game } = props;
+  const [turn, setTurn] = useState('player');
 
-  const attack = () => {
-    attackOpponent();
+  const tl = new TimelineLite();
+  const animationAttackOpponent = () => {
+    tl.to('.player-pokemon-image img', {
+      rotateZ: -30,
+      duration: 0.15,
+      ease: Power1.easeOut,
+    });
+    tl.to('.player-pokemon-image img', {
+      rotateZ: 40,
+      duration: 0.2,
+      ease: Power1.easeOut,
+      delay: 0.2,
+    });
+    tl.to('.player-pokemon-image img', {
+      rotateZ: 35,
+      duration: 0.1,
+    });
+    tl.to('.player-pokemon-image img', {
+      rotateZ: 38,
+      duration: 0.1,
+    });
+    tl.to('.player-pokemon-image img', {
+      rotateZ: 0,
+      duration: 0.2,
+      ease: Power1.easeOut,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      x: '2%',
+      y: '3%',
+      duration: 0.05,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      x: '-2%',
+      y: '-1%',
+      duration: 0.05,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      x: '2%',
+      y: '-1%',
+      duration: 0.05,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      x: '-1%',
+      y: '1%',
+      duration: 0.05,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      x: '0%',
+      y: '0%',
+      duration: 0.05,
+    });
   };
 
-  const oppAttack = () => {
-    attackPlayer();
+  const animationAttackPlayer = () => {
+    tl.to('.opponent-pokemon-image img', {
+      rotateZ: 30,
+      duration: 0.15,
+      ease: Power1.easeOut,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      rotateZ: -40,
+      duration: 0.2,
+      ease: Power1.easeOut,
+      delay: 0.2,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      rotateZ: -35,
+      duration: 0.1,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      rotateZ: -38,
+      duration: 0.1,
+    });
+    tl.to('.opponent-pokemon-image img', {
+      rotateZ: 0,
+      duration: 0.2,
+      ease: Power1.easeOut,
+    });
+    tl.to('.player-pokemon-image img', {
+      x: '2%',
+      y: '3%',
+      duration: 0.05,
+    });
+    tl.to('.player-pokemon-image img', {
+      x: '-2%',
+      y: '-1%',
+      duration: 0.05,
+    });
+    tl.to('.player-pokemon-image img', {
+      x: '2%',
+      y: '-1%',
+      duration: 0.05,
+    });
+    tl.to('.player-pokemon-image img', {
+      x: '-1%',
+      y: '1%',
+      duration: 0.05,
+    });
+    tl.to('.player-pokemon-image img', {
+      x: '0%',
+      y: '0%',
+      duration: 0.05,
+    });
+  };
+
+  const attack = () => {
+    setTurn('opponent');
+    animationAttackOpponent();
+    setTimeout(() => {
+      attackOpponent();
+    }, 1000);
+    setTimeout(() => {
+      animationAttackPlayer();
+      setTimeout(() => {
+        attackPlayer();
+        setTurn('player');
+      }, 1000);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -72,12 +186,11 @@ const GamePlay = (props) => {
             <PokemonStats pokemon={opponent.data.activePokemon} />
           </div>
           <div className="interface">
-            <button type="button" className="attack" onClick={attack}>
-              Attack
-            </button>
-            <button type="button" className="attack" onClick={oppAttack}>
-              Opp Attack
-            </button>
+            {turn === 'player' && game.data.status !== 'gameOver' ? (
+              <button type="button" className="attack" onClick={attack}>
+                Attack
+              </button>
+            ) : null}
           </div>
         </div>
       </PlayableArea>
@@ -95,6 +208,7 @@ const mapStateToProps = (state) => {
   return {
     player: state.player,
     opponent: state.opponent,
+    game: state.game,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GamePlay);
