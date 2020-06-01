@@ -1,4 +1,4 @@
-import { wonGame } from './game';
+import { wonGame, roundWon } from './game';
 
 export const types = {
   ATTACK_OPPONENT: 'ATTACK_OPPONENT',
@@ -29,6 +29,7 @@ export const attackOpponent = () => (dispatch, getState) => {
       dispatch(wonGame());
     } else {
       dispatch(replacePokemon());
+      dispatch(roundWon());
     }
   } else {
     dispatch({

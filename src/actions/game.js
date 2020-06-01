@@ -4,6 +4,7 @@ import { resetOpponent } from './opponent';
 
 export const types = {
   START_GET_GAME: 'START_GET_GAME',
+  UPDATE_GAME_STAT: 'UPDATE_GAME_STAT',
   END_GAME: 'END_GAME',
   RESET_GAME: 'RESET_GAME',
 };
@@ -40,6 +41,17 @@ export const lostGame = () => (dispatch) => {
   };
   dispatch({
     type: types.END_GAME,
+    payload,
+  });
+};
+
+export const roundWon = () => (dispatch, getState) => {
+  const { game } = getState();
+  const payload = {
+    roundsWon: game.data.roundsWon + 1,
+  };
+  dispatch({
+    type: types.UPDATE_GAME_STAT,
     payload,
   });
 };
