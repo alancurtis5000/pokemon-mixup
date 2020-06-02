@@ -8,11 +8,10 @@ const GameEnd = (props) => {
   const tl = new TimelineLite();
 
   if (game.data.status === 'gameOver') {
-    tl.to('.GameEnd', { x: '100%', duration: 0.01 });
+    tl.set('.GameEnd', { x: '0%', duration: 0.01 });
     tl.to('.GameEnd', { opacity: 1, duration: 1 });
   } else {
     tl.to('.GameEnd', { opacity: 0, duration: 1 });
-    tl.to('.GameEnd', { x: '-100%', duration: 0.01 });
   }
 
   const handlePlayAgain = () => {
@@ -20,8 +19,10 @@ const GameEnd = (props) => {
     resetGame();
   };
 
+  const offScreen = game.data.status !== 'gameOver' ? '-100%' : null;
+
   return (
-    <div className="GameEnd">
+    <div className="GameEnd" style={{ left: offScreen }}>
       <h1 className="text">Game Over {`${game.data.how}`}</h1>
       <div className="buttons">
         <button type="button" onClick={handlePlayAgain}>
