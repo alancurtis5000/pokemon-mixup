@@ -8,8 +8,8 @@ export const initalState = {
     name: 'Mean Guy',
     activePokemon: {
       name: 'lippo',
-      hp: 33,
-      currentHp: 33,
+      hp: 20,
+      currentHp: 20,
       attack: 5,
       image: '/images/bulbasaur.png',
       weight: 100,
@@ -17,21 +17,21 @@ export const initalState = {
     pokemon: [
       {
         name: 'zip',
-        hp: 36,
+        hp: 10,
         attack: 10,
         image: '/images/bulbasaur.png',
         weight: 100,
       },
       {
         name: 'blip',
-        hp: 88,
+        hp: 20,
         attack: 2,
         image: '/images/bulbasaur.png',
         weight: 100,
       },
       {
         name: 'limber',
-        hp: 3,
+        hp: 10,
         attack: 3,
         image: '/images/bulbasaur.png',
         weight: 100,

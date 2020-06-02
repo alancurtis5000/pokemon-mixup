@@ -8,9 +8,9 @@ export const initalState = {
     name: 'Joe',
     activePokemon: {
       name: 'pik',
-      hp: 23,
-      currentHp: 23,
-      attack: 23,
+      hp: 10,
+      currentHp: 10,
+      attack: 10,
       image: '/images/bulbasaur.png',
       weight: 10,
     },
