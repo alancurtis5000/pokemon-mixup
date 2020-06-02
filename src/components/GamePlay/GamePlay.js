@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { TimelineLite } from 'gsap';
 import { connect } from 'react-redux';
-import { TimelineLite, Power1 } from 'gsap';
 import PokemonStats from '../PokemonStats/PokemonStats';
 import GameStats from '../GameStats/GameStats';
 import PlayableArea from '../PlayableArea/PlayableArea';
@@ -10,6 +10,7 @@ import GameEnd from '../GameEnd/GameEnd';
 
 import { attackOpponent as attackOpponentAction } from '../../actions/opponent';
 import { attackPlayer as attackPlayerAction } from '../../actions/player';
+import animPokemon from '../../animations/pokemon';
 
 const GamePlay = (props) => {
   const [seconds, setSeconds] = useState(1);
@@ -17,119 +18,16 @@ const GamePlay = (props) => {
   const { player, opponent, attackOpponent, attackPlayer, game } = props;
   const [turn, setTurn] = useState('player');
 
-  const tl = new TimelineLite();
-  const animationAttackOpponent = () => {
-    tl.to('.player-pokemon-image img', {
-      rotateZ: -30,
-      duration: 0.15,
-      ease: Power1.easeOut,
-    });
-    tl.to('.player-pokemon-image img', {
-      rotateZ: 40,
-      duration: 0.2,
-      ease: Power1.easeOut,
-      delay: 0.2,
-    });
-    tl.to('.player-pokemon-image img', {
-      rotateZ: 35,
-      duration: 0.1,
-    });
-    tl.to('.player-pokemon-image img', {
-      rotateZ: 38,
-      duration: 0.1,
-    });
-    tl.to('.player-pokemon-image img', {
-      rotateZ: 0,
-      duration: 0.2,
-      ease: Power1.easeOut,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      x: '2%',
-      y: '3%',
-      duration: 0.05,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      x: '-2%',
-      y: '-1%',
-      duration: 0.05,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      x: '2%',
-      y: '-1%',
-      duration: 0.05,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      x: '-1%',
-      y: '1%',
-      duration: 0.05,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      x: '0%',
-      y: '0%',
-      duration: 0.05,
-    });
-  };
-
-  const animationAttackPlayer = () => {
-    tl.to('.opponent-pokemon-image img', {
-      rotateZ: 30,
-      duration: 0.15,
-      ease: Power1.easeOut,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      rotateZ: -40,
-      duration: 0.2,
-      ease: Power1.easeOut,
-      delay: 0.2,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      rotateZ: -35,
-      duration: 0.1,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      rotateZ: -38,
-      duration: 0.1,
-    });
-    tl.to('.opponent-pokemon-image img', {
-      rotateZ: 0,
-      duration: 0.2,
-      ease: Power1.easeOut,
-    });
-    tl.to('.player-pokemon-image img', {
-      x: '2%',
-      y: '3%',
-      duration: 0.05,
-    });
-    tl.to('.player-pokemon-image img', {
-      x: '-2%',
-      y: '-1%',
-      duration: 0.05,
-    });
-    tl.to('.player-pokemon-image img', {
-      x: '2%',
-      y: '-1%',
-      duration: 0.05,
-    });
-    tl.to('.player-pokemon-image img', {
-      x: '-1%',
-      y: '1%',
-      duration: 0.05,
-    });
-    tl.to('.player-pokemon-image img', {
-      x: '0%',
-      y: '0%',
-      duration: 0.05,
-    });
-  };
-
   const attack = () => {
     setTurn('opponent');
-    animationAttackOpponent();
+    const tl = new TimelineLite();
+    tl.add(animPokemon.playerAttack, 0).add(animPokemon.opponentHit, 0.4);
     setTimeout(() => {
       attackOpponent();
     }, 1000);
     setTimeout(() => {
-      animationAttackPlayer();
+      const tl2 = new TimelineLite();
+      tl2.add(animPokemon.opponentAttack, 0).add(animPokemon.playerHit, 0.4);
       setTimeout(() => {
         attackPlayer();
         setTurn('player');
