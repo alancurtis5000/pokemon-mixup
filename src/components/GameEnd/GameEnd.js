@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { TimelineLite } from 'gsap';
 import { resetGame as resetGameAction } from '../../actions/game';
+import animPokemon from '../../animations/pokemon';
 
 const GameEnd = (props) => {
   const { game, resetGame } = props;
@@ -18,6 +19,8 @@ const GameEnd = (props) => {
 
   const handlePlayAgain = () => {
     console.log('handlePlayAgain');
+    animPokemon.playerSpawn();
+    animPokemon.opponentSpawn();
     resetGame();
   };
 
