@@ -118,6 +118,61 @@ class Pokemon {
       duration: 0.05,
     });
   };
+
+  tlOpponentDie = new TimelineLite();
+
+  opponentDie = () => {
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '-10%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to(
+      '.opponent-pokemon-image img',
+      {
+        rotate: 90,
+        duration: 0.5,
+      },
+      '-=.1',
+    );
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '2%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '1%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlOpponentDie.to('.opponent-pokemon-image', {
+      opacity: 0,
+      duration: 0.3,
+    });
+  };
+
+  tlOpponentSpawn = new TimelineLite();
+
+  opponentSpawn = () => {
+    console.log('anim spawn');
+    this.tlOpponentSpawn.set('.opponent-pokemon-image img', {
+      y: '0%',
+      rotateZ: 0,
+    });
+    this.tlOpponentSpawn.to('.opponent-pokemon-image', {
+      opacity: 1,
+      duration: 0.3,
+    });
+  };
 }
 
 const pokemon = new Pokemon();

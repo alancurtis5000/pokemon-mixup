@@ -19,20 +19,53 @@ const GamePlay = (props) => {
   const [turn, setTurn] = useState('player');
 
   const attack = () => {
+    // todo: keep eye on this make sure it works as expected.
     setTurn('opponent');
-    const tl = new TimelineLite();
-    tl.add(animPokemon.playerAttack, 0).add(animPokemon.opponentHit, 0.4);
-    setTimeout(() => {
-      attackOpponent();
-    }, 1000);
-    setTimeout(() => {
-      const tl2 = new TimelineLite();
-      tl2.add(animPokemon.opponentAttack, 0).add(animPokemon.playerHit, 0.4);
+    if (
+      player.data.activePokemon.attack > opponent.data.activePokemon.currentHp
+    ) {
+      // play opponent will die anim
+      const tlAttackDie = new TimelineLite();
+      tlAttackDie
+        .add(animPokemon.playerAttack, 0)
+        .add(animPokemon.opponentDie, 0.4);
+      if (game.data.status === 'gameOver') {
+        // game over don't spawn new pokemon
+      } else {
+        setTimeout(() => {
+          animPokemon.opponentSpawn();
+          attackOpponent();
+          attackPlayer();
+          setTurn('player');
+          if (
+            opponent.data.activePokemon.attack >
+            player.data.activePokemon.currentHp
+          ) {
+            console.log('player will die');
+          } else {
+            const tl2 = new TimelineLite();
+            tl2
+              .add(animPokemon.opponentAttack, 0)
+              .add(animPokemon.playerHit, 0.4);
+          }
+        }, 3000);
+      }
+    } else {
+      // regular attack
+      const tl = new TimelineLite();
+      tl.add(animPokemon.playerAttack, 0).add(animPokemon.opponentHit, 0.4);
       setTimeout(() => {
-        attackPlayer();
-        setTurn('player');
+        attackOpponent();
       }, 1000);
-    }, 1000);
+      setTimeout(() => {
+        const tl2 = new TimelineLite();
+        tl2.add(animPokemon.opponentAttack, 0).add(animPokemon.playerHit, 0.4);
+        setTimeout(() => {
+          attackPlayer();
+          setTurn('player');
+        }, 1000);
+      }, 1000);
+    }
   };
 
   useEffect(() => {
