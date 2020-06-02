@@ -160,15 +160,68 @@ class Pokemon {
     });
   };
 
+  tlPlayerDie = new TimelineLite();
+
+  playerDie = () => {
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '-10%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to(
+      '.player-pokemon-image img',
+      {
+        rotate: -90,
+        duration: 0.5,
+      },
+      '-=.1',
+    );
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '2%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '1%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      y: '0%',
+      duration: 0.1,
+    });
+    this.tlPlayerDie.to('.player-pokemon-image', {
+      opacity: 0,
+      duration: 0.3,
+    });
+  };
+
   tlOpponentSpawn = new TimelineLite();
 
   opponentSpawn = () => {
-    console.log('anim spawn');
     this.tlOpponentSpawn.set('.opponent-pokemon-image img', {
       y: '0%',
       rotateZ: 0,
     });
     this.tlOpponentSpawn.to('.opponent-pokemon-image', {
+      opacity: 1,
+      duration: 0.3,
+    });
+  };
+
+  tlPlayerSpawn = new TimelineLite();
+
+  playerSpawn = () => {
+    this.tlPlayerSpawn.set('.player-pokemon-image img', {
+      y: '0%',
+      rotateZ: 0,
+    });
+    this.tlPlayerSpawn.to('.player-pokemon-image', {
       opacity: 1,
       duration: 0.3,
     });

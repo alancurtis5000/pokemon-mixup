@@ -20,6 +20,8 @@ const GamePlay = (props) => {
 
   const attack = () => {
     // todo: keep eye on this make sure it works as expected.
+    // may need to fine tune
+    const tl = new TimelineLite();
     setTurn('opponent');
     if (
       player.data.activePokemon.attack >= opponent.data.activePokemon.currentHp
@@ -28,6 +30,15 @@ const GamePlay = (props) => {
       console.log(' opponent active died');
       if (opponent.data.pokemon.length === 0) {
         // game over. no more pokemon to fight
+        tl.add(animPokemon.playerAttack, 0).add(animPokemon.opponentDie, 0.4);
+
+        setTimeout(() => {
+          attackOpponent();
+        }, 500);
+        setTimeout(() => {
+          setTurn('player');
+        }, 1000);
+
         console.log('game over. no more pokemon to fight');
       } else {
         // spawn new pokemon and attack
@@ -43,6 +54,14 @@ const GamePlay = (props) => {
             console.log('game is over player lost');
           } else {
             // spawn new player pokemon and set turn
+            tl.add(animPokemon.playerAttack, 0)
+              .add(animPokemon.opponentHit, 0.4)
+              .add(animPokemon.opponentAttack, 1)
+              .add(animPokemon.playerDie, 2)
+              .add(animPokemon.playerSpawn, 4);
+
+            console.log('spawn new player pokemon and set turn');
+
             setTimeout(() => {
               attackOpponent();
             }, 500);
@@ -50,10 +69,16 @@ const GamePlay = (props) => {
               attackPlayer();
               setTurn('player');
             }, 1000);
-            console.log('spawn new player pokemon and set turn');
           }
         } else {
           // play attack animtion and change turns
+
+          tl.add(animPokemon.playerAttack, 0)
+            .add(animPokemon.opponentHit, 0.4)
+            .add(animPokemon.opponentAttack, 1)
+            .add(animPokemon.playerHit, 2);
+          console.log('play attack animtion and change turns');
+
           setTimeout(() => {
             attackOpponent();
           }, 500);
@@ -61,7 +86,6 @@ const GamePlay = (props) => {
             attackPlayer();
             setTurn('player');
           }, 1000);
-          console.log('play attack animtion and change turns');
         }
       }
     } else {
@@ -79,77 +103,46 @@ const GamePlay = (props) => {
         console.log('player pokemon will die');
         if (player.data.pokemon.length === 0) {
           // game is over player lost
+          tl.add(animPokemon.playerAttack, 0)
+            .add(animPokemon.opponentHit, 0.4)
+            .add(animPokemon.opponentAttack, 1)
+            .add(animPokemon.playerDie, 2);
+
           console.log('game is over player lost');
           setTimeout(() => {
             attackPlayer();
             setTurn('player');
-          }, 1000);
+          }, 3000);
         } else {
           // spawn new player pokemon and set turn
+          tl.add(animPokemon.playerAttack, 0)
+            .add(animPokemon.opponentHit, 0.4)
+            .add(animPokemon.opponentAttack, 1)
+            .add(animPokemon.playerDie, 2)
+            .add(animPokemon.playerSpawn, 4);
+
           console.log('spawn new player pokemon and set turn');
           setTimeout(() => {
             attackPlayer();
+          }, 3000);
+          setTimeout(() => {
             setTurn('player');
-          }, 1000);
+          }, 3000);
         }
       } else {
         // play attack animtion and change turns
-        setTimeout(() => {
-          attackPlayer();
-          setTurn('player');
-        }, 1000);
-        console.log('play attack animtion and change turns');
-      }
-    }
-  };
+        tl.add(animPokemon.playerAttack, 0)
+          .add(animPokemon.opponentHit, 0.4)
+          .add(animPokemon.opponentAttack, 1)
+          .add(animPokemon.playerHit, 2);
 
-  const attack1 = () => {
-    // todo: keep eye on this make sure it works as expected.
-    setTurn('opponent');
-    if (
-      player.data.activePokemon.attack >= opponent.data.activePokemon.currentHp
-    ) {
-      // play opponent will die anim
-      const tlAttackDie = new TimelineLite();
-      tlAttackDie
-        .add(animPokemon.playerAttack, 0)
-        .add(animPokemon.opponentDie, 0.4);
-      if (game.data.status === 'gameOver') {
-        // game over don't spawn new pokemon
-      } else {
-        setTimeout(() => {
-          animPokemon.opponentSpawn();
-          attackOpponent();
-          attackPlayer();
-          setTurn('player');
-          if (
-            opponent.data.activePokemon.attack >=
-            player.data.activePokemon.currentHp
-          ) {
-            console.log('player will die');
-          } else {
-            const tl2 = new TimelineLite();
-            tl2
-              .add(animPokemon.opponentAttack, 0)
-              .add(animPokemon.playerHit, 0.4);
-          }
-        }, 3000);
-      }
-    } else {
-      // regular attack
-      const tl = new TimelineLite();
-      tl.add(animPokemon.playerAttack, 0).add(animPokemon.opponentHit, 0.4);
-      setTimeout(() => {
-        attackOpponent();
-      }, 1000);
-      setTimeout(() => {
-        const tl2 = new TimelineLite();
-        tl2.add(animPokemon.opponentAttack, 0).add(animPokemon.playerHit, 0.4);
+        console.log('play attack animtion and change turns');
+
         setTimeout(() => {
           attackPlayer();
           setTurn('player');
         }, 1000);
-      }, 1000);
+      }
     }
   };
 
