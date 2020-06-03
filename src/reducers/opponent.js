@@ -20,7 +20,7 @@ export const initalState = {
         hp: 10,
         attack: 10,
         image: '/images/charm.png',
-        weight: 100,
+        weight: 10,
       },
       {
         name: 'blip',
@@ -34,7 +34,7 @@ export const initalState = {
         hp: 10,
         attack: 3,
         image: '/images/bulbasaur.png',
-        weight: 100,
+        weight: 10,
       },
     ],
   },
