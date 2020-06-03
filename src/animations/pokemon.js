@@ -6,7 +6,7 @@ class Pokemon {
   playerAttack = () => {
     this.tlPlayerAttack.to('.player-pokemon-image img', {
       rotateZ: -30,
-      duration: 0.15,
+      duration: 0.4,
       ease: Power1.easeOut,
     });
     this.tlPlayerAttack.to('.player-pokemon-image img', {
@@ -35,7 +35,7 @@ class Pokemon {
   opponentAttack = () => {
     this.tlOpponentAttack.to('.opponent-pokemon-image img', {
       rotateZ: 30,
-      duration: 0.15,
+      duration: 0.4,
       ease: Power1.easeOut,
     });
     this.tlOpponentAttack.to('.opponent-pokemon-image img', {
@@ -87,6 +87,11 @@ class Pokemon {
       y: '0%',
       duration: 0.05,
     });
+    this.tlOpponentHit.to('.opponent-pokemon-image img', {
+      x: '0%',
+      y: '0%',
+      duration: 0.75,
+    });
   };
 
   tlPlayerHit = new TimelineLite();
@@ -117,6 +122,11 @@ class Pokemon {
       y: '0%',
       duration: 0.05,
     });
+    this.tlPlayerHit.to('.player-pokemon-image img', {
+      x: '0%',
+      y: '0%',
+      duration: 0.75,
+    });
   };
 
   tlOpponentDie = new TimelineLite();
@@ -126,14 +136,10 @@ class Pokemon {
       y: '-10%',
       duration: 0.1,
     });
-    this.tlOpponentDie.to(
-      '.opponent-pokemon-image img',
-      {
-        rotate: 90,
-        duration: 0.5,
-      },
-      '-=.1',
-    );
+    this.tlOpponentDie.to('.opponent-pokemon-image img', {
+      rotate: 90,
+      duration: 0.1,
+    });
     this.tlOpponentDie.to('.opponent-pokemon-image img', {
       y: '0%',
       duration: 0.1,
@@ -156,7 +162,7 @@ class Pokemon {
     });
     this.tlOpponentDie.to('.opponent-pokemon-image', {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.2,
     });
   };
 
@@ -167,14 +173,10 @@ class Pokemon {
       y: '-10%',
       duration: 0.1,
     });
-    this.tlPlayerDie.to(
-      '.player-pokemon-image img',
-      {
-        rotate: -90,
-        duration: 0.5,
-      },
-      '-=.1',
-    );
+    this.tlPlayerDie.to('.player-pokemon-image img', {
+      rotate: -90,
+      duration: 0.1,
+    });
     this.tlPlayerDie.to('.player-pokemon-image img', {
       y: '0%',
       duration: 0.1,
@@ -197,7 +199,7 @@ class Pokemon {
     });
     this.tlPlayerDie.to('.player-pokemon-image', {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.2,
     });
   };
 
@@ -210,7 +212,8 @@ class Pokemon {
     });
     this.tlOpponentSpawn.to('.opponent-pokemon-image', {
       opacity: 1,
-      duration: 0.3,
+      duration: 0.5,
+      delay: 0.5,
     });
   };
 
@@ -223,7 +226,8 @@ class Pokemon {
     });
     this.tlPlayerSpawn.to('.player-pokemon-image', {
       opacity: 1,
-      duration: 0.3,
+      duration: 0.5,
+      delay: 0.5,
     });
   };
 }
